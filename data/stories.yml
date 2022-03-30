@@ -1,0 +1,130 @@
+version: "2.0"
+stories:
+- story: story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+- story: story_2
+  steps:
+  - intent: thank
+  - action: utter_thank
+- story: story_3
+  steps:
+  - intent: ask_name
+    entities:
+    - name: abhinav
+  - slot_was_set:
+    - name: abhinav
+  - action: utter_greet
+- story: story_4
+  steps:
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+- story: story_5
+  steps:
+  - intent: bye
+  - action: utter_bye
+- story: story_6
+  steps:
+  - intent: out_of_scope
+  - action: utter_default
+- story: Generated Story -8395475876387399729
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: thank
+  - action: utter_thank
+  - intent: ask_name
+    entities:
+    - name: arun
+  - slot_was_set:
+    - name: arun
+  - action: utter_greet
+  - intent: medicine
+    entities:
+    - symptom: asthma
+  - slot_was_set:
+    - symptom: asthma
+  - action: action_medicine
+  - intent: bye
+  - action: utter_bye
+- story: Generated Story -2482295280972878779
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+- story: Generated Story 5009547389444319226
+  steps:
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+- story: Generated Story 7042106036174186976
+  steps:
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+- story: Generated Story -2385938240831074220
+  steps:
+  - intent: out_of_scope
+  - action: utter_default
+  - intent: out_of_scope
+  - action: utter_default
+  - intent: out_of_scope
+  - action: utter_default
+  - intent: out_of_scope
+  - action: utter_default
+- story: Generated Story 7439725141992755319
+  steps:
+  - intent: get_happy_images
+  - action: utter_get_happy_images
+  - intent: greet
+  - action: utter_greet
+  - intent: thank
+  - action: utter_thank
+- story: Generated Story -1673797503190098972
+  steps:
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+  - slot_was_set:
+    - symptom:
+        mentions:
+        - type: symptom
+          name: Headache
+          orth: headache
+          common_name: Headache
+          id: s_21
+          choice_id: present
+  - intent: medicine
+    entities:
+    - symptom: headache
+  - slot_was_set:
+    - symptom: headache
+  - action: action_medicine
+  - slot_was_set:
+    - symptom:
+        mentions:
+        - type: symptom
+          name: Headache
+          orth: headache
+          common_name: Headache
+          id: s_21
+          choice_id: present

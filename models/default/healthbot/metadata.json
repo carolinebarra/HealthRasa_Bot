@@ -1,0 +1,77 @@
+{
+    "language": "en",
+    "training_data": "training_data.json",
+    "pipeline": [
+        {
+            "case_sensitive": false,
+            "name": "nlp_spacy",
+            "class": "rasa_nlu.utils.spacy_utils.SpacyNLP",
+            "model": "en"
+        },
+        {
+            "name": "tokenizer_spacy",
+            "class": "rasa_nlu.tokenizers.spacy_tokenizer.SpacyTokenizer"
+        },
+        {
+            "name": "intent_featurizer_spacy",
+            "class": "rasa_nlu.featurizers.spacy_featurizer.SpacyFeaturizer"
+        },
+        {
+            "scoring_function": "f1_weighted",
+            "name": "intent_classifier_sklearn",
+            "class": "rasa_nlu.classifiers.sklearn_intent_classifier.SklearnIntentClassifier",
+            "max_cross_validation_folds": 5,
+            "C": [
+                1,
+                2,
+                5,
+                10,
+                20,
+                100
+            ],
+            "gamma": [
+                0.1
+            ],
+            "kernels": [
+                "linear"
+            ],
+            "classifier_file": "intent_classifier_sklearn.pkl"
+        },
+        {
+            "max_iterations": 50,
+            "name": "ner_crf",
+            "classifier_file": "crf_model.pkl",
+            "L2_c": 0.1,
+            "features": [
+                [
+                    "low",
+                    "title",
+                    "upper"
+                ],
+                [
+                    "bias",
+                    "low",
+                    "prefix5",
+                    "prefix2",
+                    "suffix5",
+                    "suffix3",
+                    "suffix2",
+                    "upper",
+                    "title",
+                    "digit",
+                    "pattern"
+                ],
+                [
+                    "low",
+                    "title",
+                    "upper"
+                ]
+            ],
+            "L1_c": 0.1,
+            "BILOU_flag": true,
+            "class": "rasa_nlu.extractors.crf_entity_extractor.CRFEntityExtractor"
+        }
+    ],
+    "rasa_nlu_version": "0.13.8",
+    "trained_at": "20181229-111320"
+}

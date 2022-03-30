@@ -1,0 +1,41 @@
+{
+  "python": "3.5.2",
+  "max_histories": [
+    5,
+    3,
+    null
+  ],
+  "trained_at": "20190112-232910",
+  "rasa_core": "0.12.3",
+  "action_fingerprints": {
+    "action_listen": {
+      "slots": [
+        "symptom",
+        "name"
+      ]
+    },
+    "utter_greet": {
+      "slots": []
+    },
+    "action_medicine": {
+      "slots": [
+        "symptom"
+      ]
+    },
+    "utter_bye": {
+      "slots": []
+    },
+    "utter_thank": {
+      "slots": []
+    },
+    "utter_default": {
+      "slots": []
+    }
+  },
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "policy_names": [
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.keras_policy.KerasPolicy",
+    "rasa_core.policies.fallback.FallbackPolicy"
+  ]
+}
