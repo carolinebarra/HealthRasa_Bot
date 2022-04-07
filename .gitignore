@@ -1,8 +1,12 @@
 # Ignore files related to API keys
-.env
-env/**
+
 # The file containing environment variables 
 .env
+.env/
+env/**
+.venv
+.venv/**
+.venv/
 # Ignore Logs
 logs
 *.log
