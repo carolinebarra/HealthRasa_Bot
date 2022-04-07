@@ -1,49 +1,50 @@
-version: '2.0'
+version: "2.0"
+
+actions:
+- action_medicine
+- utter_bye
+- utter_thank
+- utter_default
+- utter_greet
+- utter_get_happy_images
+- utter_ask_name
+entities:
+- name
+- symptom
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - medicine
-  - thank
-  - ask_name
-  - get_happy_images
-  - bye
-  - out_of_scope
+- medicine
+- thank
+- ask_name
+- get_happy_images
+- bye
+- out_of_scope
+- greet
+slots:
+  name:
+    type: text
+  remedy:
+    type: text
+  symptom:
+    type: text
 responses:
-  utter_greet:
-    - text: 'Hello, How can I help you?'
-    - text: 'Hello, tell me your problems! I will cure them!'
-  utter_cheer_up:
-    - text: 'Here is something to cheer you up:'
-      image: 'https://i.imgur.com/nGF1K8f.jpg'
-  utter_did_that_help:
-    - text: Did that help you?
-  utter_happy:
-    - text: 'Great, carry on!'
-  utter_goodbye:
-    - text: Bye
-  utter_iamabot:
-    - text: 'I am a bot, powered by Rasa.'
   utter_ask_name:
-    - text: 'Nice name! I shall call you {name} from now.'
+  - text: Nice name! I shall call you {name} from now.
   utter_bye:
-    - text: Have a nice day!
-    - text: 'Talk to you later {name}'
-    - text: Goodbye
-    - text: 'Bye, it was nice talking to you!'
+  - text: Have a nice day!
+  - text: Talk to you later {name}
+  - text: Goodbye
+  - text: Bye, it was nice talking to you!
   utter_default:
-    - text: 'Sorry, I did not understand you'
+  - text: Sorry, I did not understand you
   utter_get_happy_images:
-    - text: Here is something to cheer you up
-      image: >-
-        http://cutestcats.us/wp-content/uploads/2014/07/The-Happiest-Smiling-Cat-In-The-Universe.jpg
+  - image: http://cutestcats.us/wp-content/uploads/2014/07/The-Happiest-Smiling-Cat-In-The-Universe.jpg
+    text: Here is something to cheer you up
+  utter_greet:
+  - text: Hello, How can I help you?
+  - text: Hello, tell me your problems! I will cure them!
   utter_thank:
-    - text: You are welcome.
-    - text: Glad you liked my service
+  - text: You are welcome.
+  - text: Glad you liked my service
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

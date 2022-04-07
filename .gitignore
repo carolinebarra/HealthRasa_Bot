@@ -1,0 +1,10 @@
+# Ignore files related to API keys
+.env
+env/**
+# The file containing environment variables 
+.env
+# Ignore Logs
+logs
+*.log
+# Ignore the node_modules directory
+node_modules/

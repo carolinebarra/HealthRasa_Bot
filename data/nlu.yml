@@ -64,7 +64,7 @@ nlu:
     - pls help me
     - hello how are you
     - hi there
-    - hey ther
+    - hey there
     - Hi good morning
 - intent: medicine
   examples: |
@@ -112,4 +112,3 @@ nlu:
 - synonym: arun
   examples: |
     - Arun
-
