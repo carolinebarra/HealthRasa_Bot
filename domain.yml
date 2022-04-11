@@ -27,6 +27,11 @@ actions:
 - utter_submit
 - utter_slots_values
 - action_diagnosis_query
+- action_response_query
+- action_ask_input
+- action_ask_slot
+- action_reset_slots
+- action_storage_query
 entities:
 - name
 - gender
@@ -81,9 +86,9 @@ responses:
   - text: Glad you liked my service
   utter_call999:
   - text: If you are in danger, please stop using this bot and call 999 
-  - text: This bot is not ment to be used in emergencies, please call 999
+  - text: This bot is not intent to be used in emergencies, please call 999
   utter_bot_intro:
-  - text: This chatbot is used for triage, you are going to be asked for your details and symptoms which are going to be relayed to a phisician.
+  - text: This chatbot is used for triage, you are going to be asked for your details and symptoms which are going to be relayed to a doctor
   utter_ask_gatheruserdata_gender:
   - text: What is your gender?
   - text: What is the closest gender you would describe yourself as?

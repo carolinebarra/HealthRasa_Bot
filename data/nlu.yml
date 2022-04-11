@@ -40,6 +40,8 @@ nlu:
     - People call me [Billy](name)
     - You can call me [Arun](name)
     - My name is [Arun]{"entity": "name", "value": "arun"}
+    - [Caroline](name)
+    - [szymon](name)
 - intent: bye
   examples: |
     - bye
@@ -164,7 +166,7 @@ nlu:
     - pls check me symptoms
     - pls check my symptom
     - I am not feeling well
-    - not feeling upto it
+    - not feeling up to it
     - feeling a bit off
     - really unwell
     - need some consultation on my symptoms
@@ -223,7 +225,7 @@ nlu:
     - experiencing some joint pain
     - fever
     - I am having fever and backache
-    - fever and bodyache
+    - fever and body ache
     - joint pain and fever
     - fever and headache
 - intent: get_choice

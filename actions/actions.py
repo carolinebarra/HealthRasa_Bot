@@ -156,7 +156,7 @@ class DiagnosisQuery(Action):
         gender = (str(gender_provided.lower()))
 
         evidenceList = []
-        # Getting the varibale Initial
+        # Getting the varible Initial
         Initial_True = possibleSymptomsIDs["Initial"]
 
         for id, choiceID in possibleSymptomsIDs.items():
@@ -259,67 +259,6 @@ class StorageQuery(Action):
             return [SlotSet("ids", SymptomsIDs), SlotSet("flag", True)]
 
 
-class FinalQuery(Action):
-
-    def name(self) -> Text:
-        return "action_final_query"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        gender_provided = str(tracker.get_slot("gender"))
-        age_provided = str(tracker.get_slot("age"))
-        SymptomsIDs = (tracker.get_slot("ids"))
-        disease, output = FinalQuery.result(gender_provided, age_provided, SymptomsIDs)
-        dispatcher.utter_message(disease)
-        dispatcher.utter_message(output)
-
-    def result(gender_provided, age_provided, possibleSymptomsIDs):
-
-        url = "https://api.infermedica.com/v3/diagnosis"
-        App_ID = 'e8ec3a23'
-        App_Key = 'bb5f99fdf290881089f3c151097de513'
-        age = int(age_provided)
-        gender = (str(gender_provided.lower()))
-
-        evidenceList = []
-        # Getting the varibale Initial
-        Initial_True = possibleSymptomsIDs["Initial"]
-
-        for id, choiceID in possibleSymptomsIDs.items():
-
-            if id == "Initial":
-                continue
-            elif id == Initial_True:
-                evidenceList.append({"id": id, "choice_id": choiceID, "source": "initial"})
-            else:
-                evidenceList.append({"id": id, "choice_id": choiceID})
-
-        payload = json.dumps({
-            "sex": gender,
-            "age": {
-                "value": age
-            },
-            "evidence": evidenceList
-        })
-        headers = {
-            'App-Id': App_ID,
-            'App-Key': App_Key,
-            'Authorization': 'Basic ZThlYzNhMjM6IGJiNWY5OWZkZjI5MDg4MTA4OWYzYzE1MTA5N2RlNTEzCSA=',
-            'Content-Type': 'application/json'
-        }
-
-        response = requests.request("POST", url, headers=headers, data=payload)
-
-        r = response.json()
-        disease = r['conditions'][0]['common_name']
-
-        t1 = "After looking at your symptoms the most probable disease is: " + str(disease)
-
-        query = "Remedies for " + str(disease)
-        text = "Please look at the following links for remedies : \n"
-        for j in search(query, tld="co.in", num=4, stop=3, pause=2):
-            text += str(j) + "\n"
-
-        return (t1, text)
 
 
 class ResetSlots(Action):

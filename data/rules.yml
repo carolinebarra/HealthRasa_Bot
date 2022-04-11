@@ -7,3 +7,16 @@ rules:
   - intent: check_symptoms
   - action: gatheruserdata
   - active_loop: gatheruserdata
+
+- rule: Submit gatherdata for symptoms
+  condition:
+  - active_loop: gatheruserdata
+  steps:
+  - action: gatheruserdata
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_initial_query
+  wait_for_user_input: false
