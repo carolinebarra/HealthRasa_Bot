@@ -1,34 +1,71 @@
 version: "2.0"
-
+intents:
+- medicine
+- thank
+- bye
+- out_of_scope
+- greet
+- emergency
+- get_age
+- get_gender
+- check_symptoms
+- get_name
+- get_symptom
+- get_choice
 actions:
 - action_medicine
 - utter_bye
 - utter_thank
 - utter_default
 - utter_greet
-- utter_get_happy_images
-- utter_ask_name
+- utter_name
+- utter_bot_intro
+- utter_ask_gatheruserdata_age
+- utter_ask_gatheruserdata_gender
+- utter_ask_gatheruserdata_symptom_initial
+- action_initial_query
+- utter_submit
+- utter_slots_values
+- action_diagnosis_query
 entities:
 - name
+- gender
 - symptom
-intents:
-- medicine
-- thank
-- ask_name
-- get_happy_images
-- bye
-- out_of_scope
-- greet
+- age
 slots:
+  age:
+    type: text
+    influence_conversation: true
+  gender:
+    type: text
+    influence_conversation: true
   name:
     type: text
   remedy:
     type: text
-  symptom:
+    influence_conversation: true
+  symptom_initial:
     type: text
+    influence_conversation: true
+  choice:
+    type: text
+    influence_conversation: true
+  ids:
+    type: list
+    influence_conversation: true
+  idkey:
+    type: list
+    influence_conversation: true
+  prompts:
+    type: list
+    influence_conversation: true
+  flag:
+    type: list
+    influence_conversation: true
+
 responses:
-  utter_ask_name:
-  - text: Nice name! I shall call you {name} from now.
+  utter_name:
+  - text: What is your name?
   utter_bye:
   - text: Have a nice day!
   - text: Talk to you later {name}
@@ -36,15 +73,49 @@ responses:
   - text: Bye, it was nice talking to you!
   utter_default:
   - text: Sorry, I did not understand you
-  utter_get_happy_images:
-  - image: http://cutestcats.us/wp-content/uploads/2014/07/The-Happiest-Smiling-Cat-In-The-Universe.jpg
-    text: Here is something to cheer you up
   utter_greet:
   - text: Hello, How can I help you?
   - text: Hello, tell me your problems! I will cure them!
   utter_thank:
   - text: You are welcome.
   - text: Glad you liked my service
+  utter_call999:
+  - text: If you are in danger, please stop using this bot and call 999 
+  - text: This bot is not ment to be used in emergencies, please call 999
+  utter_bot_intro:
+  - text: This chatbot is used for triage, you are going to be asked for your details and symptoms which are going to be relayed to a phisician.
+  utter_ask_gatheruserdata_gender:
+  - text: What is your gender?
+  - text: What is the closest gender you would describe yourself as?
+  utter_ask_gatheruserdata_age:
+  - text: What is your age?
+  - text: Could you provide me with your age?
+  utter_ask_gatheruserdata_symptom_initial:
+  - text: What are your symptoms like?
+  - text: Could you tell me in brief the symptoms you are experiencing?
+  utter_ask_gatheruserdata_name:
+  - text : What's your name?
+  utter_submit:
+  - text: Relaying the data to your doctor
+  utter_slots_values:
+  - text: I have your details as follows, Age is {age} years, Gender is {gender}, Symptoms are {symptom_initial}
+forms:
+  gatheruserdata:
+    name:
+    - type: from_text
+      entity: name
+      intent: get_name
+    gender:
+    - type: from_entity
+      entity: gender
+      intent: get_gender
+    age:
+    - type: from_entity
+      entity: age
+      intent: get_age
+    symptom_initial:
+    - type: from_text
+      intent: get_symptom
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

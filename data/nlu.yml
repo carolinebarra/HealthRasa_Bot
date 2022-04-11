@@ -1,6 +1,38 @@
 version: "2.0"
 nlu:
-- intent: ask_name
+- synonym: female
+  examples: |
+    - woman
+    - girl
+    - women
+    - lady
+    - lass
+    - matron
+    - gal
+    - doll
+- synonym: male
+  examples: |
+    - boy
+    - man
+    - guy
+    - gentleman
+    - gent
+    - geezer
+    - lad
+    - fella
+    - chap
+    - bloke
+- synonym: headache
+  examples: |
+    - migraine
+- synonym: pain
+  examples: |
+    - hurting
+    - ache
+- synonym: severe pain
+  examples: |
+    - agony
+- intent: get_name
   examples: |
     - My name is [Arun](name)
     - I am [Abhinav](name)
@@ -27,21 +59,6 @@ nlu:
     - later
     - I have to go.
     - I am going now
-- intent: get_happy_images
-  examples: |
-    - Can you get me image of a cat?
-    - Can you make me happy?
-    - Make me smile
-    - I am feeling sad
-    - I dont feel good
-    - Make me laugh
-    - Please make me laugh
-    - Can you show me something amusing?
-    - Amuse me
-    - Make me roll
-    - Get me a happy image
-    - I want to be happy
-    - Show me something
 - intent: greet
   examples: |
     - hi
@@ -64,7 +81,7 @@ nlu:
     - pls help me
     - hello how are you
     - hi there
-    - hey there
+    - hey ther
     - Hi good morning
 - intent: medicine
   examples: |
@@ -109,6 +126,119 @@ nlu:
     - great suggestion
     - You are great thank you
     - I want to thank you
-- synonym: arun
+- intent: emergency
   examples: |
-    - Arun
+    - Severe Pain
+    - Intense Pain
+    - Dieing
+    - Shot
+    - Stabbed
+    - Bleeding
+    - Passed Out
+    - Sudden numbness
+    - Trouble Speaking
+    - Seizure
+    - Wound
+    - Breathing difficulties
+    - Heart attack
+    - Choking
+    - Sudden dizziness
+    - Sudden Weakness
+    - Change in vision
+    - Swallowing a toxic substance
+    - Coughing up blood
+    - Vomiting blood
+- intent: suicidal
+  examples: |
+      - Suicidal
+      - Depression
+- intent: check_symptoms
+  examples: |
+    - I want to perform a check on my symptoms
+    - please check my symptoms?
+    - wish to get my symptoms checked
+    - I am having some symptoms
+    - could you check my symptoms?
+    - please check my symptoms
+    - could u check my symptoms
+    - pls check me symptoms
+    - pls check my symptom
+    - I am not feeling well
+    - not feeling upto it
+    - feeling a bit off
+    - really unwell
+    - need some consultation on my symptoms
+    - i am having some health issues
+    - not well
+    - please advice me on my symptoms
+    - keeping unwell
+    - down on health
+    - feeling down
+    - am having some troubles
+    - some ailments
+    - I have a complaint
+    - I am ill
+    - experiencing illness
+    - sick today
+    - some sickness
+    - having an affliction
+    - check symptoms
+- intent: get_age
+  examples: |
+      - I am [35](age)
+      - [32](age)
+      - [23](age) years old
+- intent: get_gender
+  examples: |
+      - [Male](gender)
+      - [Female](gender)
+      - I am [male](gender)
+      - I am [female](gender)
+      - My gender is [Male](gender)
+      - My gender is [Female](gender)
+- intent: get_symptom
+  examples: |
+    - I have a headache and back pain
+    - leg pain and swelling
+    - stomachache and backache
+    - pain in jaw and toothache
+    - cough sore throat and running nose
+    - palpitations and heart burn
+    - acidity and reflux
+    - cramps in abdomen
+    - diarrhoea and loose bowel
+    - watery eyes and ear pain
+    - bodyache and fever
+    - noose bleed
+    - I have a fever and a sore throat
+    - I have a fever
+    - fever and chills
+    - lumbar pain and cervical pain
+    - blurry vision
+    - feeling dizzy
+    - have nausea
+    - footache and ankle pain
+    - vomitting and stomach pain
+    - I have a headache and mild fever
+    - experiencing some joint pain
+    - fever
+    - I am having fever and backache
+    - fever and bodyache
+    - joint pain and fever
+    - fever and headache
+- intent: get_choice
+  examples: |
+    - [a](choice)
+    - [b](choice)
+    - [c](choice)
+    - [d](choice)
+    - [e](choice)
+    - [A](choice)
+    - [B](choice)
+    - [K](choice)
+    - [F](choice)
+    - [Z](choice)
+    - [b](choice)
+    - [a](choice)
+    - [c](choice)
+
