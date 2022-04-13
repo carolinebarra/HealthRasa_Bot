@@ -1,73 +1,60 @@
-version: "2.0"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
 intents:
-- medicine
-- thank
-- bye
-- out_of_scope
-- greet
-- emergency
-- get_age
 - get_gender
 - check_symptoms
-- get_name
 - get_symptom
 - get_choice
-actions:
-- action_medicine
-- utter_bye
-- utter_thank
-- utter_default
-- utter_greet
-- utter_name
-- utter_bot_intro
-- utter_ask_gatheruserdata_age
-- utter_ask_gatheruserdata_gender
-- utter_ask_gatheruserdata_symptom_initial
-- action_initial_query
-- utter_submit
-- utter_slots_values
-- action_diagnosis_query
-- action_response_query
-- action_ask_input
-- action_ask_slot
-- action_reset_slots
-- action_storage_query
+- get_name
+- greet
+- medicine
+- thankyou
+- bye
+- out_of_scope
+- emergency
+- get_age
+- affirm
+- deny
 entities:
-- name
-- gender
-- symptom
 - age
+- choice
+- gender
+- name
 slots:
   age:
-    type: text
-    influence_conversation: true
-  gender:
-    type: text
-    influence_conversation: true
-  name:
-    type: text
-  remedy:
-    type: text
-    influence_conversation: true
-  symptom_initial:
     type: text
     influence_conversation: true
   choice:
     type: text
     influence_conversation: true
-  ids:
+  flag:
     type: list
+    influence_conversation: true
+  gender:
+    type: text
     influence_conversation: true
   idkey:
     type: list
     influence_conversation: true
+  ids:
+    type: list
+    influence_conversation: true
+  name:
+    type: text
+    influence_conversation: true
   prompts:
     type: list
     influence_conversation: true
-  flag:
-    type: list
+  remedy:
+    type: text
     influence_conversation: true
-
+  requested_slot:
+    type: text
+    influence_conversation: false
+  symptom_initial:
+    type: text
+    influence_conversation: true
 responses:
   utter_name:
   - text: What is your name?
@@ -76,16 +63,13 @@ responses:
   - text: Talk to you later {name}
   - text: Goodbye
   - text: Bye, it was nice talking to you!
-  utter_default:
-  - text: Sorry, I did not understand you
   utter_greet:
   - text: Hello, How can I help you?
-  - text: Hello, tell me your problems! I will cure them!
-  utter_thank:
+  utter_thankyou:
   - text: You are welcome.
   - text: Glad you liked my service
   utter_call999:
-  - text: If you are in danger, please stop using this bot and call 999 
+  - text: If you are in danger, please stop using this bot and call 999
   - text: This bot is not intent to be used in emergencies, please call 999
   utter_bot_intro:
   - text: This chatbot is used for triage, you are going to be asked for your details and symptoms which are going to be relayed to a doctor
@@ -99,11 +83,42 @@ responses:
   - text: What are your symptoms like?
   - text: Could you tell me in brief the symptoms you are experiencing?
   utter_ask_gatheruserdata_name:
-  - text : What's your name?
+  - text: What's your name?
   utter_submit:
   - text: Relaying the data to your doctor
   utter_slots_values:
   - text: I have your details as follows, Age is {age} years, Gender is {gender}, Symptoms are {symptom_initial}
+  utter_selection:
+  - text: How would you describe the severity of your symptoms? Select from a number below
+  - text: How bad are your symptoms? Please triage them as below
+  utter_ask_continue:
+  - text: Do you want to continue the search?
+  utter_did_that_help:
+  - text: Did that help you?
+  - text: Do you need any more help?
+actions:
+- action_ask_input
+- action_ask_slot
+- action_diagnosis_query
+- action_final_query
+- action_initial_query
+- action_medicine
+- action_reset_slots
+- action_response_query
+- action_storage_query
+- utter_ask_continue
+- utter_ask_gatheruserdata_age
+- utter_ask_gatheruserdata_gender
+- utter_ask_gatheruserdata_symptom_initial
+- utter_bot_intro
+- utter_bye
+- utter_did_that_help
+- utter_greet
+- utter_name
+- utter_selection
+- utter_slots_values
+- utter_submit
+- utter_thankyou
 forms:
   gatheruserdata:
     name:
@@ -121,6 +136,4 @@ forms:
     symptom_initial:
     - type: from_text
       intent: get_symptom
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: false
+version: '2.0'

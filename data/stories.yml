@@ -630,3 +630,97 @@ stories:
       - s_105
       - s_104
       - s_2268
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_bot_intro
+  - intent: check_symptoms
+  - action: gatheruserdata
+  - active_loop: gatheruserdata
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - name: caroline
+  - slot_was_set:
+    - name: caroline
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: female
+  - slot_was_set:
+    - gender: female
+  - slot_was_set:
+    - requested_slot: age
+  - intent: get_choice
+    entities:
+    - age: '21'
+  - slot_was_set:
+    - age: '21'
+  - action: utter_ask_gatheruserdata_symptom_initial
+  - intent: get_symptom
+  - intent: get_symptom
+  - action: utter_ask_gatheruserdata_symptom_initial
+  - intent: get_symptom
+  - action: gatheruserdata
+  - slot_was_set:
+    - requested_slot: symptom_initial
+  - slot_was_set:
+    - symptom_initial: fever
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_initial_query
+  - slot_was_set:
+    - ids:
+        Initial: s_98
+        s_98: present
+  - action: action_initial_query
+  - slot_was_set:
+    - ids:
+        Initial: s_98
+        s_98: present
+  - action: action_diagnosis_query
+  - slot_was_set:
+    - prompts:
+      - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "More than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "It wasn't measured\n1. Yes\n2. No\n3. Don't know\n"
+  - slot_was_set:
+    - idkey:
+      - s_99
+      - s_100
+      - s_2000
+      - s_1820
+  - action: action_response_query
+  - intent: get_choice
+    entities:
+    - choice: B
+  - slot_was_set:
+    - choice: B
+  - action: action_storage_query
+  - action: action_reset_slots
+  - slot_was_set:
+    - choice: null
+  - slot_was_set:
+    - idkey: null
+  - slot_was_set:
+    - prompts: null
+  - slot_was_set:
+    - flag: false
+  - action: action_diagnosis_query
+  - slot_was_set:
+    - prompts:
+      - "Between 98.6 and 100.4 °F or 37 and 38 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "Between 100.4 and 104 °F or 38 and 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "More than 104 °F or 40 °C\n1. Yes\n2. No\n3. Don't know\n"
+      - "It wasn't measured\n1. Yes\n2. No\n3. Don't know\n"
+  - slot_was_set:
+    - idkey:
+      - s_99
+      - s_100
+      - s_2000
+      - s_1820

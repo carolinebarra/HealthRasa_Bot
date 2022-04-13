@@ -2,12 +2,20 @@ version: "2.0"
 
 rules:
 
+- rule: Show functionalities
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_bot_intro
+  - action: action_listen
+
 - rule: Activate gatherdata for symptoms
   steps:
   - intent: check_symptoms
   - action: gatheruserdata
   - active_loop: gatheruserdata
-
+  
 - rule: Submit gatherdata for symptoms
   condition:
   - active_loop: gatheruserdata

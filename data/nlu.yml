@@ -1,37 +1,5 @@
 version: "2.0"
 nlu:
-- synonym: female
-  examples: |
-    - woman
-    - girl
-    - women
-    - lady
-    - lass
-    - matron
-    - gal
-    - doll
-- synonym: male
-  examples: |
-    - boy
-    - man
-    - guy
-    - gentleman
-    - gent
-    - geezer
-    - lad
-    - fella
-    - chap
-    - bloke
-- synonym: headache
-  examples: |
-    - migraine
-- synonym: pain
-  examples: |
-    - hurting
-    - ache
-- synonym: severe pain
-  examples: |
-    - agony
 - intent: get_name
   examples: |
     - My name is [Arun](name)
@@ -40,8 +8,9 @@ nlu:
     - People call me [Billy](name)
     - You can call me [Arun](name)
     - My name is [Arun]{"entity": "name", "value": "arun"}
-    - [Caroline](name)
+    - [Caroline](name){"entity": "name", "value": "Caroline"}
     - [szymon](name)
+    - [caroline](name)
 - intent: bye
   examples: |
     - bye
@@ -107,7 +76,7 @@ nlu:
     - Do you know about soccer?
     - Do you know who is Justin Trudeau
     - Do you know quantum computing?
-- intent: thank
+- intent: thankyou
   examples: |
     - thank you
     - thanks
@@ -152,8 +121,8 @@ nlu:
     - Vomiting blood
 - intent: suicidal
   examples: |
-      - Suicidal
-      - Depression
+    - Suicidal
+    - Depression
 - intent: check_symptoms
   examples: |
     - I want to perform a check on my symptoms
@@ -185,19 +154,21 @@ nlu:
     - some sickness
     - having an affliction
     - check symptoms
+    - unwell
 - intent: get_age
   examples: |
-      - I am [35](age)
-      - [32](age)
-      - [23](age) years old
+    - I am [35](age)
+    - [32](age)
+    - [23](age) years old
 - intent: get_gender
   examples: |
-      - [Male](gender)
-      - [Female](gender)
-      - I am [male](gender)
-      - I am [female](gender)
-      - My gender is [Male](gender)
-      - My gender is [Female](gender)
+    - [Male](gender)
+    - [Female](gender)
+    - I am [male](gender)
+    - I am [female](gender)
+    - My gender is [Male](gender)
+    - My gender is [Female](gender)
+    - [female](gender)
 - intent: get_symptom
   examples: |
     - I have a headache and back pain
@@ -240,7 +211,85 @@ nlu:
     - [K](choice)
     - [F](choice)
     - [Z](choice)
-    - [b](choice)
-    - [a](choice)
-    - [c](choice)
-
+    - [1](choice)
+    - [2](choice)
+    - [3](choice)
+    - [Yes](choice)
+    - [No](choice)
+    - [Don't know](choice)
+    - [dont know](choice)
+    - [21](age)
+    - [B](choice)
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - sure
+    - that does the job
+    - surely
+    - for sure
+    - cent percent
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - agree
+    - true
+    - nice job
+    - yes that helps!
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no thanks
+    - no thank you
+    - uh no
+    - noope
+    - this didn't solve my query
+    - could you look it up again?
+    - do you have something else?
+    - no this does not work for me
+    - please show me some other results
+    - these do not suit my needs
+    - not meeting my requirements
+    - not upto the mark
+- synonym: female
+  examples: |
+    - woman
+    - girl
+    - women
+    - lady
+    - lass
+    - matron
+    - gal
+    - doll
+- synonym: male
+  examples: |
+    - boy
+    - man
+    - guy
+    - gentleman
+    - gent
+    - geezer
+    - lad
+    - fella
+    - chap
+    - bloke
+- synonym: headache
+  examples: |
+    - migraine
+- synonym: pain
+  examples: |
+    - hurting
+    - ache
+- synonym: severe pain
+  examples: |
+    - agony
+- synonym: arun
+  examples: |
+    - Arun

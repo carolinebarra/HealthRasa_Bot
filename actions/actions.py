@@ -10,7 +10,9 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import unicode_literals
+from tkinter.messagebox import QUESTION
 from typing import Any, Text, Dict, List
+from urllib import response
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, FollowupAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -21,196 +23,94 @@ import json
 
 modification = 0
 choice_array = []
-
-class ActionMed(Action):
-    def name(self):
-        return "action_medicine"
-
-    def run(self, dispatcher, tracker, domain):
-        api = infermedica_api.APIv3Connector(
+api = infermedica_api.APIv3Connector(
             app_id="ebde5b4c", app_key="e12a3525de781b52ae5b0356d21a0a8c"
         )
-        choices = {}
-        buttons = []
-
-        # Prepare initial patients diagnostic information.
-        sex = "female"
-        age = 32
-        evidence = [
-            {"id": "s_21", "choice_id": "present", "source": "initial"},
-            {"id": "s_98", "choice_id": "present", "source": "initial"},
-            {"id": "s_107", "choice_id": "present"},
-        ]
-        symp = tracker.get_slot("symptom")
-        request = api.diagnosis(evidence=evidence, sex=sex, age=age)
-        symp = api.parse(symp, age)
-        symp_id = symp["mentions"][0]["id"]
-        evidence.append(
-            {
-                "id": symp_id,
-                "choice_id": request["question"]["items"][0]["choices"][0][
-                    "id"
-                ],  # Just example, the choice_id shall be taken from the real user answer
-            }
-        )
-        # call diagnosis
-        request = api.diagnosis(evidence=evidence, sex=sex, age=age)
-        #print(response["question"])
-        #print(response["question"]["text"])  # actual text of the question
-        # list of related evidence with possible answers
-        items = request["question"]["items"]
-
-        for choice in items:
-            choices[choice["id"]] = choice["name"]
-        # actual text of the question
-        response = request["question"]["text"]
-
-        for key, value in choices.items():
-            title = value
-            evidence.append({"id": key, "choice_id": "present"})
-            request = api.diagnosis(evidence=evidence, sex=sex, age=age)
-            text = request["question"]["text"]
-            buttons.append({"title": title, "payload": text})
-            response = "Tell me more about it"
-
-        dispatcher.utter_button_message(response, buttons)
-        return [SlotSet("symptom", symp)]
-    
-
-modification = 0
-choice_array = []
-
-
 class InitialQuery(Action):
-
-    def name(self) -> Text:
+    def name(self):
         return "action_initial_query"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[List, Any]):
         gender_provided = str(tracker.get_slot("gender"))
         age_provided = str(tracker.get_slot("age"))
         symptom_initial_provided = str(tracker.get_slot("symptom_initial"))
-        SymptomIDs = InitialQuery.firstSymptomCollector(gender_provided, age_provided, symptom_initial_provided)
-
-        # Run close:
-        return [SlotSet("ids", SymptomIDs)]
-
-    def firstSymptomCollector(gender_provided, age_provided, symptom_initial_provided):
-
-        url = "https://api.infermedica.com/v3/parse"
-        App_ID = 'ebde5b4c'
-        App_Key = 'e12a3525de781b52ae5b0356d21a0a8c'
+       
         age = int(age_provided)
-        gender = (str(gender_provided.lower()))
+        gender = str(gender_provided.lower())
         symptom_query = str(symptom_initial_provided)
-
-        payload = json.dumps({
-            "text": symptom_query,
-            "age": {
-                "value": age
-            },
-            "sex": gender
-        })
-        headers = {
-            'App-Id': App_ID,
-            'App-Key': App_Key,
-            'Authorization': 'Basic ZThlYzNhMjM6IGJiNWY5OWZkZjI5MDg4MTA4OWYzYzE1MTA5N2RlNTEzCSA=',
-            'Content-Type': 'application/json'
-        }
-
-        response = requests.request("POST", url, headers=headers, data=payload)
-
-        # Converting the response received to the JSON Format
-        info = response.json()
-
+        symp = api.parse(text=symptom_query, age=age)
+      
         # Staring of the List:
         possibleSymptomsIDs = {}
-        for symid in info["mentions"]:
+        for symid in symp["mentions"]:
             # Considering one of the symptoms as Initial
             if "Initial" not in possibleSymptomsIDs:
                 possibleSymptomsIDs["Initial"] = symid["id"]
-            possibleSymptomsIDs[symid["id"]] = symid["choice_id"]
+                possibleSymptomsIDs[symid["id"]] = symid["choice_id"]
 
-        return possibleSymptomsIDs
 
+        print(possibleSymptomsIDs)
+        return [SlotSet("ids", possibleSymptomsIDs)]    
+
+    
 class DiagnosisQuery(Action):
-
-    def name(self) -> Text:
+    def name(self):
         return "action_diagnosis_query"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[List, Any]):
         gender_provided = str(tracker.get_slot("gender"))
         age_provided = str(tracker.get_slot("age"))
+        name_provided = str(tracker.get_slot("name"))
         SymptomsIDs = (tracker.get_slot("ids"))
-        Question, Ques_Ans, IDs = DiagnosisQuery.diagnosis(gender_provided, age_provided, SymptomsIDs)
-
-        dispatcher.utter_message(Question)
-        # Run close:
-        return [SlotSet("prompts", Ques_Ans), SlotSet("idkey", IDs)]
-
-    def diagnosis(gender_provided, age_provided, possibleSymptomsIDs):
-        url = "https://api.infermedica.com/v3/diagnosis"
-        App_ID = 'ebde5b4c'
-        App_Key = 'e12a3525de781b52ae5b0356d21a0a8c'
         age = int(age_provided)
         gender = (str(gender_provided.lower()))
-
+        name = (str(name_provided.lower()))
         evidenceList = []
-        # Getting the varible Initial
-        Initial_True = possibleSymptomsIDs["Initial"]
-
-        for id, choiceID in possibleSymptomsIDs.items():
+        Initial_True = SymptomsIDs["Initial"]
+        for id, choiceID in SymptomsIDs.items():
             if id == "Initial":
                 continue
             elif id == Initial_True:  # Only for considering Initial as Initial.
                 evidenceList.append({"id": id, "choice_id": choiceID, "source": "initial"})
             else:
-                evidenceList.append({"id": id, "choice_id": choiceID})
+                evidenceList.append({"id": id, "choice_id": choiceID})      
 
-        print(evidenceList)
-        payload = json.dumps({
-            "sex": gender,
-            "age": {
-                "value": age
-            },
-            "evidence": evidenceList
-        })
-        headers = {
-            'App-Id': App_ID,
-            'App-Key': App_Key,
-            'Authorization': 'Basic ZThlYzNhMjM6IGJiNWY5OWZkZjI5MDg4MTA4OWYzYzE1MTA5N2RlNTEzCSA=',
-            'Content-Type': 'application/json'
-        }
-
-        response = requests.request("POST", url, headers=headers, data=payload)
-
-        r = response.json()
+        request = api.diagnosis(evidence=evidenceList, sex=gender, age=age, interview_id=name)
         #  print(r['question']['items'])
+        #print(response["question"]["text"])  # actual text of the question
+        # list of related evidence with possible answers
+        question = request["question"]["text"]
+        items = request["question"]["items"]
 
         questions_to_ask = []
         IDs = []
-        for i in (r['question']['items']):
+        for i in items:
             response_str = ""
             response_str += str(i['name']) + "\n"
             # Storing the ID
             IDs.append(i['id'])
-            # print(ID)
-            # print(i['name'])
+            print(IDs)
+            print(i['name'])
             order = 1
             for j in (i['choices']):
                 response_str += str(order) + ". " + str(j['label']) + "\n"
                 order += 1
             questions_to_ask.append(response_str)
+        print(questions_to_ask, IDs)
+        print(question, questions_to_ask, IDs)
 
-        return (r["question"]["text"], questions_to_ask, IDs)
+        dispatcher.utter_message(question)
+    
+        return [SlotSet("prompts", questions_to_ask), SlotSet("idkey", IDs)]
+
 
 class ResponseQuery(Action):
     global modification
     
-    def name(self) -> Text:
+    def name(self):
         return "action_response_query"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
         global modification
         gender_provided = str(tracker.get_slot("gender"))
         age_provided = str(tracker.get_slot("age"))
@@ -225,20 +125,19 @@ class ResponseQuery(Action):
                     continue
                 dispatcher.utter_message(q)
                 modification += 1
-                return [FollowupAction('action_listen')]  # CHECK!!
+                return [FollowupAction('action_listen')] 
         else:
             modification = 0
             return [SlotSet("choice", "null")]
-		# elif mod = 0 and count =5:                                        # check on this!!!
-			# return [SlotSet("choice", "null"),SlotSet("breaker", true)]
+		
 
 class StorageQuery(Action):
     global choice_array
 
-    def name(self) -> Text:
+    def name(self):
         return "action_storage_query"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
         global choice_array
         Choice = str(tracker.get_slot("choice"))
         choice_array.append(Choice)
@@ -256,14 +155,15 @@ class StorageQuery(Action):
                         choice_array[i]:
                     SymptomsIDs[IDs[i]] = "unknown"
             choice_array=[]
+            print(choice_array)
             return [SlotSet("ids", SymptomsIDs), SlotSet("flag", True)]
 
 
 
 
 class ResetSlots(Action):
-    def name(self) -> Text:
+    def name(self):
         return "action_reset_slots"
 
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict):
         return [SlotSet("choice", None), SlotSet("idkey", None), SlotSet("prompts", None), SlotSet("flag", False)]
