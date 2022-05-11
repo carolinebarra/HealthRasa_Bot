@@ -1,0 +1,34 @@
+[
+  {
+    "text": "I am 35",
+    "intent": "get_age",
+    "intent_prediction": {
+      "name": "get_choice",
+      "confidence": 0.504603922367096
+    }
+  },
+  {
+    "text": "32",
+    "intent": "get_age",
+    "intent_prediction": {
+      "name": "get_choice",
+      "confidence": 0.9145517945289612
+    }
+  },
+  {
+    "text": "23 years old",
+    "intent": "get_age",
+    "intent_prediction": {
+      "name": "get_choice",
+      "confidence": 0.49969881772994995
+    }
+  },
+  {
+    "text": "26",
+    "intent": "get_age",
+    "intent_prediction": {
+      "name": "get_choice",
+      "confidence": 0.9145517945289612
+    }
+  }
+]

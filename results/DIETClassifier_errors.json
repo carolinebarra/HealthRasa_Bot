@@ -1,0 +1,136 @@
+[
+  {
+    "text": "Caroline{\"entity\": \"name\", \"value\": \"Caroline\"}",
+    "entities": [
+      {
+        "start": 0,
+        "end": 8,
+        "value": "Caroline",
+        "entity": "name"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 0,
+        "end": 8,
+        "confidence_entity": 0.6664291024208069,
+        "value": "Caroline",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "name",
+        "start": 37,
+        "end": 45,
+        "confidence_entity": 0.7171112895011902,
+        "value": "Caroline",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "32",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "32",
+        "entity": "age"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "choice",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.5451177954673767,
+        "value": "32",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "26",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "26",
+        "entity": "age"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "choice",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.5451177954673767,
+        "value": "26",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I have a headache and back pain",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "symptom",
+        "start": 9,
+        "end": 17,
+        "confidence_entity": 0.9925899505615234,
+        "value": "headache",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I have a headache and mild fever",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "symptom",
+        "start": 9,
+        "end": 17,
+        "confidence_entity": 0.9922575950622559,
+        "value": "headache",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "fever and headache",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "symptom",
+        "start": 10,
+        "end": 18,
+        "confidence_entity": 0.9933331608772278,
+        "value": "headache",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "21",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "21",
+        "entity": "age"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "choice",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.5451177954673767,
+        "value": "21",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
