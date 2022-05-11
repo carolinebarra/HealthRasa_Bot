@@ -630,3 +630,41 @@ stories:
       - s_105
       - s_104
       - s_2268
+
+- story: interactive_story_1
+  steps:
+  - intent: help
+  - action: utter_bot_intro
+  - action: gatheruserdata
+  - active_loop: gatheruserdata
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - name: Jeff
+  - slot_was_set:
+    - name: My name is Jeff
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '26'
+  - slot_was_set:
+    - age: '26'
+  - slot_was_set:
+    - requested_slot: symptom_initial
+  - slot_was_set:
+    - symptom_initial: eyes are itchy
+  - slot_was_set:
+    - symptom_initial: My eyes are itchy
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slots_values
+  - action: action_initial_query
+  - action: utter_bye
