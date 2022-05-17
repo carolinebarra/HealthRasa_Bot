@@ -2,11 +2,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-- greet
 - get_name
 - get_age
-- check_symptoms
+- greet
 - get_symptom
+- check_symptoms
 - get_choice
 - get_gender
 - deny
@@ -21,6 +21,7 @@ entities:
 - choice
 - gender
 - name
+- symptom
 slots:
   age:
     type: text
@@ -45,9 +46,6 @@ slots:
     influence_conversation: true
   prompts:
     type: list
-    influence_conversation: true
-  remedy:
-    type: text
     influence_conversation: true
   requested_slot:
     type: text
@@ -135,5 +133,6 @@ forms:
       intent: get_age
     symptom_initial:
     - type: from_text
+      entity: symptom
       intent: get_symptom
 version: '2.0'

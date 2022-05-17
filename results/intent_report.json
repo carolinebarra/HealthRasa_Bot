@@ -1,10 +1,64 @@
 {
+  "get_gender": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 7,
+    "confused_with": {}
+  },
   "medicine": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 6,
     "confused_with": {}
+  },
+  "get_name": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "thankyou": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 19,
+    "confused_with": {}
+  },
+  "suicidal": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2,
+    "confused_with": {}
+  },
+  "check_symptoms": {
+    "precision": 1.0,
+    "recall": 0.9117647058823529,
+    "f1-score": 0.9538461538461539,
+    "support": 34,
+    "confused_with": {
+      "deny": 2,
+      "nlu_fallback": 1
+    }
+  },
+  "get_choice": {
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1-score": 0.9473684210526316,
+    "support": 18,
+    "confused_with": {}
+  },
+  "get_age": {
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
+    "support": 4,
+    "confused_with": {
+      "get_choice": 2
+    }
   },
   "bye": {
     "precision": 1.0,
@@ -13,24 +67,31 @@
     "support": 17,
     "confused_with": {}
   },
-  "check_symptoms": {
+  "emergency": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 31,
+    "support": 20,
     "confused_with": {}
   },
-  "get_gender": {
+  "get_symptom": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 7,
+    "support": 28,
     "confused_with": {}
   },
-  "thankyou": {
+  "greet": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
+    "support": 22,
+    "confused_with": {}
+  },
+  "deny": {
+    "precision": 0.9047619047619048,
+    "recall": 1.0,
+    "f1-score": 0.9500000000000001,
     "support": 19,
     "confused_with": {}
   },
@@ -41,48 +102,6 @@
     "support": 15,
     "confused_with": {}
   },
-  "get_name": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 10,
-    "confused_with": {}
-  },
-  "emergency": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 20,
-    "confused_with": {}
-  },
-  "greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 22,
-    "confused_with": {}
-  },
-  "get_symptom": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 28,
-    "confused_with": {}
-  },
-  "get_choice": {
-    "precision": 0.8181818181818182,
-    "recall": 1.0,
-    "f1-score": 0.9,
-    "support": 18,
-    "confused_with": {}
-  },
-  "deny": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 19,
-    "confused_with": {}
-  },
   "out_of_scope": {
     "precision": 1.0,
     "recall": 1.0,
@@ -90,33 +109,22 @@
     "support": 12,
     "confused_with": {}
   },
-  "suicidal": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2,
-    "confused_with": {}
+  "micro avg": {
+    "precision": 0.9827586206896551,
+    "recall": 0.9785407725321889,
+    "f1-score": 0.9806451612903226,
+    "support": 233
   },
-  "get_age": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 4,
-    "confused_with": {
-      "get_choice": 4
-    }
-  },
-  "accuracy": 0.9826086956521739,
   "macro avg": {
-    "precision": 0.9212121212121213,
-    "recall": 0.9333333333333333,
-    "f1-score": 0.9266666666666666,
-    "support": 230
+    "precision": 0.9869841269841271,
+    "recall": 0.9607843137254902,
+    "f1-score": 0.9678587494376968,
+    "support": 233
   },
   "weighted avg": {
-    "precision": 0.9683794466403162,
-    "recall": 0.9826086956521739,
-    "f1-score": 0.9747826086956521,
-    "support": 230
+    "precision": 0.9845084815041897,
+    "recall": 0.9785407725321889,
+    "f1-score": 0.9793994312291128,
+    "support": 233
   }
 }

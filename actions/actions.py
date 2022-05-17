@@ -81,7 +81,6 @@ class DiagnosisQuery(Action):
         # list of related evidence with possible answers
         question = request["question"]["text"]
         items = request["question"]["items"]
-
         questions_to_ask = []
         IDs = []
         for i in items:
@@ -156,6 +155,7 @@ class StorageQuery(Action):
                     SymptomsIDs[IDs[i]] = "unknown"
             choice_array=[]
             print(choice_array)
+            print("hi")
             return [SlotSet("ids", SymptomsIDs), SlotSet("flag", True)]
 
 

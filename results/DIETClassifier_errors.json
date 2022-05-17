@@ -1,76 +1,5 @@
 [
   {
-    "text": "Caroline{\"entity\": \"name\", \"value\": \"Caroline\"}",
-    "entities": [
-      {
-        "start": 0,
-        "end": 8,
-        "value": "Caroline",
-        "entity": "name"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "name",
-        "start": 0,
-        "end": 8,
-        "confidence_entity": 0.6664291024208069,
-        "value": "Caroline",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "name",
-        "start": 37,
-        "end": 45,
-        "confidence_entity": 0.7171112895011902,
-        "value": "Caroline",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "32",
-    "entities": [
-      {
-        "start": 0,
-        "end": 2,
-        "value": "32",
-        "entity": "age"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "choice",
-        "start": 0,
-        "end": 2,
-        "confidence_entity": 0.5451177954673767,
-        "value": "32",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "26",
-    "entities": [
-      {
-        "start": 0,
-        "end": 2,
-        "value": "26",
-        "entity": "age"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "choice",
-        "start": 0,
-        "end": 2,
-        "confidence_entity": 0.5451177954673767,
-        "value": "26",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
     "text": "I have a headache and back pain",
     "entities": [],
     "predicted_entities": [
@@ -78,7 +7,7 @@
         "entity": "symptom",
         "start": 9,
         "end": 17,
-        "confidence_entity": 0.9925899505615234,
+        "confidence_entity": 0.8050382733345032,
         "value": "headache",
         "extractor": "DIETClassifier"
       }
@@ -92,7 +21,7 @@
         "entity": "symptom",
         "start": 9,
         "end": 17,
-        "confidence_entity": 0.9922575950622559,
+        "confidence_entity": 0.7996006011962891,
         "value": "headache",
         "extractor": "DIETClassifier"
       }
@@ -106,29 +35,71 @@
         "entity": "symptom",
         "start": 10,
         "end": 18,
-        "confidence_entity": 0.9933331608772278,
+        "confidence_entity": 0.9503545761108398,
         "value": "headache",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "21",
+    "text": "1",
     "entities": [
       {
         "start": 0,
-        "end": 2,
-        "value": "21",
-        "entity": "age"
+        "end": 1,
+        "value": "1",
+        "entity": "choice"
       }
     ],
     "predicted_entities": [
       {
-        "entity": "choice",
+        "entity": "age",
         "start": 0,
-        "end": 2,
-        "confidence_entity": 0.5451177954673767,
-        "value": "21",
+        "end": 1,
+        "confidence_entity": 0.6363347172737122,
+        "value": "1",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "2",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "2",
+        "entity": "choice"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "age",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.6363347172737122,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "3",
+    "entities": [
+      {
+        "start": 0,
+        "end": 1,
+        "value": "3",
+        "entity": "choice"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "age",
+        "start": 0,
+        "end": 1,
+        "confidence_entity": 0.6363347172737122,
+        "value": "3",
         "extractor": "DIETClassifier"
       }
     ]

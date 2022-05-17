@@ -1,10 +1,26 @@
 [
   {
-    "text": "I am 35",
-    "intent": "get_age",
+    "text": "booK an appointment",
+    "intent": "check_symptoms",
     "intent_prediction": {
-      "name": "get_choice",
-      "confidence": 0.504603922367096
+      "name": "nlu_fallback",
+      "confidence": 1.0
+    }
+  },
+  {
+    "text": "book doctor appointment",
+    "intent": "check_symptoms",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.6781574487686157
+    }
+  },
+  {
+    "text": "book",
+    "intent": "check_symptoms",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.5982131958007812
     }
   },
   {
@@ -12,15 +28,7 @@
     "intent": "get_age",
     "intent_prediction": {
       "name": "get_choice",
-      "confidence": 0.9145517945289612
-    }
-  },
-  {
-    "text": "23 years old",
-    "intent": "get_age",
-    "intent_prediction": {
-      "name": "get_choice",
-      "confidence": 0.49969881772994995
+      "confidence": 0.7036888003349304
     }
   },
   {
@@ -28,7 +36,7 @@
     "intent": "get_age",
     "intent_prediction": {
       "name": "get_choice",
-      "confidence": 0.9145517945289612
+      "confidence": 0.7036888003349304
     }
   }
 ]
