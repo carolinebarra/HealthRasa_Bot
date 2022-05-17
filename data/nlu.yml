@@ -182,6 +182,8 @@ nlu:
     - My gender is [Male](gender)
     - My gender is [Female](gender)
     - [female](gender)
+    - im a [man](male)
+    - im a man[]{"entity": "gender", "value": "male"}
     - [female](gender)
 - intent: get_symptom
   examples: |
@@ -213,6 +215,7 @@ nlu:
     - fever and body ache
     - joint pain and fever
     - fever and headache
+    - My [eyes itchy](symptom_initial)
 - intent: get_choice
   examples: |
     - [a](choice)
@@ -273,6 +276,9 @@ nlu:
     - these do not suit my needs
     - not meeting my requirements
     - not upto the mark
+- intent: help
+  examples: |
+    - i need help
 - synonym: arun
   examples: |
     - Arun
