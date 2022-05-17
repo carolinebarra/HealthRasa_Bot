@@ -1,56 +1,56 @@
 version: "2.0"
 stories:
-- story: happy path 1 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+- story: happy path 1 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_bot_intro
   - intent: mood_great  # predicted: thankyou: amazing
-  - action: utter_happy  # predicted: action_listen
-- story: happy path 2 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_happy  # predicted: utter_call999
+- story: happy path 2 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_bot_intro
   - intent: mood_great  # predicted: thankyou: amazing
-  - action: utter_happy  # predicted: action_listen
+  - action: utter_happy  # predicted: utter_call999
   - intent: goodbye  # predicted: bye: bye-bye!
-  - action: utter_goodbye  # predicted: action_listen
-- story: sad path 1 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_goodbye  # predicted: utter_call999
+- story: sad path 1 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_bot_intro
-  - intent: mood_unhappy  # predicted: deny: not good
-  - action: utter_cheer_up  # predicted: action_listen
+  - intent: mood_unhappy  # predicted: bye: not good
+  - action: utter_cheer_up  # predicted: utter_call999
   - action: utter_did_that_help  # predicted: action_listen
   - intent: affirm
-  - action: utter_happy  # predicted: action_default_fallback
-- story: sad path 2 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_happy  # predicted: utter_call999
+- story: sad path 2 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_bot_intro
-  - intent: mood_unhappy  # predicted: deny: not good
-  - action: utter_cheer_up  # predicted: action_listen
+  - intent: mood_unhappy  # predicted: bye: not good
+  - action: utter_cheer_up  # predicted: utter_call999
   - action: utter_did_that_help  # predicted: action_listen
   - intent: deny
-  - action: utter_goodbye  # predicted: action_default_fallback
-- story: sad path 3 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_goodbye  # predicted: utter_call999
+- story: sad path 3 (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_bot_intro
   - intent: mood_unhappy  # predicted: get_symptom: very terrible
-  - action: utter_cheer_up  # predicted: action_listen
+  - action: utter_cheer_up  # predicted: utter_call999
   - action: utter_did_that_help  # predicted: action_listen
   - intent: deny
-  - action: utter_goodbye  # predicted: action_default_fallback
-- story: say goodbye (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_goodbye  # predicted: utter_call999
+- story: say goodbye (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: goodbye  # predicted: bye: bye-bye!
-  - action: utter_goodbye  # predicted: action_listen
-- story: bot challenge (C:\Users\CAROLI~1\AppData\Local\Temp\tmpzi8l9onl\20c729d84f6841b2adcaa1d8e31d12d1_test_stories.yml)
+  - action: utter_goodbye  # predicted: utter_call999
+- story: bot challenge (C:\Users\CAROLI~1\AppData\Local\Temp\tmpgbotd428\28720543bdf44936bfcd924ac9a33fca_test_stories.yml)
   steps:
   - intent: bot_challenge  # predicted: greet: are you a bot?
-  - action: utter_iamabot  # predicted: action_listen
+  - action: utter_iamabot  # predicted: utter_call999

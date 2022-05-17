@@ -1,42 +1,34 @@
 [
   {
-    "text": "booK an appointment",
-    "intent": "check_symptoms",
+    "text": "1",
+    "intent": "get_choice",
     "intent_prediction": {
-      "name": "nlu_fallback",
-      "confidence": 1.0
+      "name": "get_age",
+      "confidence": 0.8011702299118042
     }
   },
   {
-    "text": "book doctor appointment",
-    "intent": "check_symptoms",
+    "text": "2",
+    "intent": "get_choice",
     "intent_prediction": {
-      "name": "deny",
-      "confidence": 0.6781574487686157
+      "name": "get_age",
+      "confidence": 0.8011702299118042
     }
   },
   {
-    "text": "book",
-    "intent": "check_symptoms",
+    "text": "3",
+    "intent": "get_choice",
     "intent_prediction": {
-      "name": "deny",
-      "confidence": 0.5982131958007812
+      "name": "get_age",
+      "confidence": 0.8011702299118042
     }
   },
   {
-    "text": "32",
-    "intent": "get_age",
+    "text": "21",
+    "intent": "get_choice",
     "intent_prediction": {
-      "name": "get_choice",
-      "confidence": 0.7036888003349304
-    }
-  },
-  {
-    "text": "26",
-    "intent": "get_age",
-    "intent_prediction": {
-      "name": "get_choice",
-      "confidence": 0.7036888003349304
+      "name": "get_age",
+      "confidence": 0.8011702299118042
     }
   }
 ]

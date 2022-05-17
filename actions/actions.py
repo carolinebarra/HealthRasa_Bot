@@ -10,6 +10,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import unicode_literals
+from email import message
 from tkinter.messagebox import QUESTION
 from typing import Any, Text, Dict, List
 from urllib import response
@@ -80,6 +81,7 @@ class DiagnosisQuery(Action):
         #print(response["question"]["text"])  # actual text of the question
         # list of related evidence with possible answers
         question = request["question"]["text"]
+    
         items = request["question"]["items"]
         questions_to_ask = []
         IDs = []

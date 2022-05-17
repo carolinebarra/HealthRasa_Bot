@@ -14,6 +14,7 @@ nlu:
     - [Caroline](name)
     - cleo
     - [carolinr](name)
+    - [caroline](name)
 - intent: bye
   examples: |
     - bye
@@ -163,6 +164,7 @@ nlu:
     - book doctor appointment
     - book
     - im ill
+    - ill
 - intent: get_age
   examples: |
     - I am [35](age)
@@ -170,6 +172,7 @@ nlu:
     - [23](age) years old
     - [26](age)
     - [21](age)
+    - [26](age)
 - intent: get_gender
   examples: |
     - [Male](gender)

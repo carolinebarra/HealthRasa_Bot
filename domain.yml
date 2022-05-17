@@ -2,14 +2,14 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-- get_name
-- get_age
-- greet
 - get_symptom
+- get_name
 - check_symptoms
-- get_choice
-- get_gender
 - deny
+- get_gender
+- get_age
+- get_choice
+- greet
 - medicine
 - thankyou
 - bye
