@@ -14,7 +14,8 @@ nlu:
     - [Caroline](name)
     - cleo
     - [carolinr](name)
-    - [caroline](name)
+    - [szymon](name)
+    - [simon](name)
 - intent: bye
   examples: |
     - bye
@@ -165,6 +166,7 @@ nlu:
     - book
     - im ill
     - ill
+    - simon
 - intent: get_age
   examples: |
     - I am [35](age)
@@ -172,7 +174,8 @@ nlu:
     - [23](age) years old
     - [26](age)
     - [21](age)
-    - [26](age)
+    - [24](age)
+    - [25](age)
 - intent: get_gender
   examples: |
     - [Male](gender)
@@ -183,8 +186,8 @@ nlu:
     - My gender is [Female](gender)
     - [female](gender)
     - im a [man](male)
-    - im a man[]{"entity": "gender", "value": "male"}
-    - [female](gender)
+    - im a [man]{"entity": "gender", "value": "male"}
+    - [male](gender)
 - intent: get_symptom
   examples: |
     - I have a headache and back pain
@@ -215,7 +218,6 @@ nlu:
     - fever and body ache
     - joint pain and fever
     - fever and headache
-    - My [eyes itchy](symptom_initial)
 - intent: get_choice
   examples: |
     - [a](choice)
@@ -238,6 +240,7 @@ nlu:
     - [21](age)
     - [a](choice)
     - [b](choice)
+    - [c](choice)
 - intent: affirm
   examples: |
     - yes
@@ -255,6 +258,7 @@ nlu:
     - true
     - nice job
     - yes that helps!
+    - [ye]{"entity": "affirm", "value": "yes"}
 - intent: deny
   examples: |
     - no
@@ -282,6 +286,18 @@ nlu:
 - synonym: arun
   examples: |
     - Arun
+- synonym: male
+  examples: |
+    - man
+    - boy
+    - guy
+    - gentleman
+    - gent
+    - geezer
+    - lad
+    - fella
+    - chap
+    - bloke
 - synonym: female
   examples: |
     - woman
@@ -292,18 +308,6 @@ nlu:
     - matron
     - gal
     - doll
-- synonym: male
-  examples: |
-    - boy
-    - man
-    - guy
-    - gentleman
-    - gent
-    - geezer
-    - lad
-    - fella
-    - chap
-    - bloke
 - synonym: headache
   examples: |
     - migraine
